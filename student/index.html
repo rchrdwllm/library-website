@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <h1>Books</h1>
+            <button class="cart-btn">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                    />
+                </svg>
+            </button>
+        </header>
+        <div class="approval-modal-container">
+            <div class="approval-modal">
+                <button class="approval-modal-close">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+                <h1>
+                    Your books are now <br />
+                    pending approval!
+                </h1>
+                <p>
+                    Please wait until our librarian approves your books before <br />
+                    you can start reading
+                </p>
+            </div>
+        </div>
+        <div class="books-container">
+            <h1>Books</h1>
+            <p>Click on books to add them to your cart instantly!</p>
+            <div class="books-grid"></div>
+        </div>
+        <aside class="books-cart">
+            <div class="books-cart-wrapper">
+                <div class="books-cart-header">
+                    <h1>Your cart</h1>
+                    <button class="books-cart-close">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="cart-items">
+                    <div class="cart-placeholder">
+                        <p>
+                            Looks like you haven't added anything to your cart yet. Start reading
+                            today!
+                        </p>
+                    </div>
+                </div>
+                <button class="submit-btn" disabled>Submit</button>
+            </div>
+        </aside>
+        <script src="script.js"></script>
+    </body>
+</html>
