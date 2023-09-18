@@ -81,7 +81,7 @@ header {
     padding: 1rem 10rem;
     border-bottom: 1px solid var(--border);
     background-color: rgba(253, 253, 255, 0.75);
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px) saturate(150%);
     position: sticky;
     top: 0;
     display: flex;
@@ -129,7 +129,7 @@ header .header-btns .cart-btn:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px) saturate(150%);
     pointer-events: none;
     transition: 0.25s opacity;
     opacity: 0;
@@ -195,7 +195,7 @@ header .header-btns .cart-btn:hover {
 }
 
 .books-container {
-    padding: 3rem 10rem;
+    padding: 3rem 10rem 7rem;
 }
 
 .books-container .hero-heading {
@@ -311,7 +311,7 @@ header .header-btns .cart-btn:hover {
     height: 100vh;
     z-index: 2;
     background-color: #00000046;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px) saturate(150%);
     pointer-events: none;
     transition: 0.25s opacity;
     opacity: 0;
@@ -455,4 +455,20 @@ header .header-btns .cart-btn:hover {
     box-shadow: none;
     background-color: var(--secondary-background);
     color: var(--secondary-text);
+}
+
+footer {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color: var(--secondary-accent);
+}
+
+footer p {
+    margin-top: 1rem;
+    width: 50%;
+    text-align: center;
 }

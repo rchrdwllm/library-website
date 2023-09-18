@@ -95,6 +95,166 @@ const books = [
         coverImg:
             'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1618526890i/13335037.jpg',
     },
+    {
+        title: 'The Brothers Hawthorne',
+        author: 'Jennifer Lynn Barnes',
+        id: '13',
+        url: 'https://www.goodreads.com/book/show/62804258-the-brothers-hawthorne',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1664812464i/62804258.jpg',
+    },
+    {
+        title: 'My Roommate Is a Vampire',
+        author: 'Jenna Levine',
+        id: '14',
+        url: 'https://www.goodreads.com/book/show/60041932-my-roommate-is-a-vampire',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1665612756i/60041932.jpg',
+    },
+    {
+        title: 'Assassin to the Villain',
+        author: 'Hannah Nicole Maehrer',
+        id: '15',
+        url: 'https://www.goodreads.com/book/show/123257687-assistant-to-the-villain',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1679005122i/123257687.jpg',
+    },
+    {
+        title: 'Omen of Ice',
+        author: 'Jus Accardo',
+        id: '16',
+        url: 'https://www.goodreads.com/book/show/62039334-omen-of-ice',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1683578486i/62039334.jpg',
+    },
+    {
+        title: 'Star Bringer',
+        author: 'Tracy Wolff, Nina Croft',
+        id: '17',
+        url: 'https://www.goodreads.com/book/show/61431958-star-bringer',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1658350127i/61431958.jpg',
+    },
+    {
+        title: 'Frienemies with Benefits',
+        author: 'Lydia Sharp',
+        id: '18',
+        url: 'https://www.goodreads.com/book/show/62039335-frenemies-with-benefits',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1674938898i/62039335.jpg',
+    },
+    {
+        title: 'Sign of the Slayer',
+        author: 'Sharina Harris',
+        id: '19',
+        url: 'https://www.goodreads.com/book/show/60741826-sign-of-the-slayer',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684334946i/60741826.jpg',
+    },
+    {
+        title: 'A Glamour of Blood',
+        author: 'L.E. Sterling',
+        id: '20',
+        url: 'https://www.goodreads.com/book/show/133287223-a-glamour-of-blood',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1682569864i/133287223.jpg',
+    },
+    {
+        title: 'Neverwraith',
+        author: 'Andrea Lankford',
+        id: '21',
+        url: 'https://www.goodreads.com/book/show/60827548-neverwraith',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680084913i/60827548.jpg',
+    },
+    {
+        title: 'Trail of the Lost',
+        author: 'Andrea Lankford',
+        id: '22',
+        url: 'https://www.goodreads.com/book/show/64000414-trail-of-the-lost',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1671522419i/64000414.jpg',
+    },
+    {
+        title: 'The English Experience',
+        author: 'Julie Schumacher',
+        id: '23',
+        url: 'https://www.goodreads.com/book/show/63366031-the-english-experience',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684815303i/63366031.jpg',
+    },
+    {
+        title: 'WanderLust',
+        author: 'Elle Everhart',
+        id: '24',
+        url: 'https://www.goodreads.com/book/show/62952155-wanderlust',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685351754i/62952155.jpg',
+    },
+    {
+        title: 'Abroad in Japan',
+        author: 'Chris Broad',
+        id: '25',
+        url: 'https://www.goodreads.com/book/show/64645770-abroad-in-japan',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1689819152i/64645770.jpg',
+    },
+    {
+        title: 'The Loom of Time: Between Empire and Anarchy, from the Mediterranean to China',
+        author: 'Rober D. Kaplan',
+        id: '26',
+        url: 'https://www.goodreads.com/book/show/63933641-the-loom-of-time',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685991284i/63933641.jpg',
+    },
+    {
+        title: 'The Underworld: Journeys to the Depths of the Ocean',
+        author: 'Susan Casey',
+        id: '27',
+        url: 'https://www.goodreads.com/book/show/63241875-the-underworld',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684815235i/63241875.jpg',
+    },
+    {
+        title: 'To Walk It Is to See It',
+        author: 'Kathy Elkind',
+        id: '28',
+        url: 'https://www.goodreads.com/book/show/123251600-to-walk-it-is-to-see-it',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1678914522i/123251600.jpg',
+    },
+    {
+        title: 'Flavour with Benefits: Sicily & Calabria',
+        author: 'Cathy Conally & Charley Best',
+        id: '29',
+        url: 'https://www.goodreads.com/book/show/196030312-flavour-with-benefits',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1692910100i/196030312.jpg',
+    },
+    {
+        title: 'Eight Bears: Mythic Past and Imperiled Future',
+        author: 'Gloria Dickie',
+        id: '30',
+        url: 'https://www.goodreads.com/book/show/62585980-eight-bears',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681758563i/62585980.jpg',
+    },
+    {
+        title: 'The House Swap',
+        author: 'Yvette Clark',
+        id: '31',
+        url: 'https://www.goodreads.com/book/show/61232287-the-house-swap',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657668123i/61232287.jpg',
+    },
+    {
+        title: 'The Japan Lights: On the Trail of the Scot Who Lit Up Japan’s Coast',
+        author: 'Iain Maloney',
+        id: '32',
+        url: 'https://www.goodreads.com/book/show/142287926-the-japan-lights',
+        coverImg:
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1682550923i/142287926.jpg',
+    },
 ];
 const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
 const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
@@ -181,8 +341,7 @@ function populateBooks() {
     }
 
     if (approvedBooks.length) {
-        approvedModal.classList.toggle('visible');
-
+        toggleApprovedModal();
         checkOffApprovedBooks();
     }
 
