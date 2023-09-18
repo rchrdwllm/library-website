@@ -9,7 +9,7 @@
 
 :root {
     --background: #fdfdff;
-    --secondary-background: #ededf0;
+    --secondary-background: #f4f4f7;
     --text: #373a3b;
     --secondary-text: #747474;
     --accent: #9b8686;
@@ -201,6 +201,22 @@ header .header-btns .cart-btn:hover {
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
     margin-top: 2rem;
+}
+
+.books-container .books-grid.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+.books-container .books-grid.empty .books-grid-placeholder {
+    text-align: center;
+}
+
+.books-container .books-grid.empty .books-grid-placeholder p {
+    margin-top: 1rem;
+    color: var(--secondary-text);
 }
 
 .books-container .books-grid .book .book-img-container {

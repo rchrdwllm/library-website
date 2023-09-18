@@ -102,6 +102,9 @@ const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
 let booksCards;
 let booksCart;
 let cartItems = [];
+let searchedBooks = [...books];
+
+const booksGrid = document.querySelector('.books-grid');
 const submitBtn = document.querySelector('.submit-btn');
 const approvalModal = document.querySelector('.approval-modal-container');
 const closeApprovalModalBtn = document.querySelector('.approval-modal-close');
@@ -111,48 +114,48 @@ const cart = document.querySelector('.books-cart');
 const cartOverlay = document.querySelector('.books-cart-overlay');
 const cartBtn = document.querySelector('.cart-btn');
 const cartCloseBtn = document.querySelector('.books-cart-close');
+const searchQuery = document.querySelector('#query');
 
 submitBtn.addEventListener('click', submitBooks);
 closeApprovalModalBtn.addEventListener('click', toggleApprovalModal);
 closeApprovedModalBtn.addEventListener('click', toggleApprovedModal);
 cartBtn.addEventListener('click', toggleCart);
 cartCloseBtn.addEventListener('click', toggleCart);
+searchQuery.addEventListener('keyup', searchBooks);
 
 function populateBooks() {
-    const booksGrid = document.querySelector('.books-grid');
-
     books.forEach(book => {
         booksGrid.innerHTML += `
-        <div class="book">
-            <div data-id="${book.id}" class="book-img-container">
-                <div class="book-approved-overlay">
-                    <figure>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </figure>
+            <div class="book">
+                <div data-id="${book.id}" class="book-img-container">
+                    <div class="book-approved-overlay">
+                        <figure>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </figure>
+                    </div>
+                    <img src="${book.coverImg}" class="book-img" alt="book-img">
                 </div>
-                <img src="${book.coverImg}" class="book-img" alt="book-img">
+                <div class="book-details">
+                    <h4 class="title">
+                        <a href="${book.url}" target="_blank">${book.title}</a>
+                    </h4>
+                    <p class="author">By ${book.author}</p>
+                </div>
             </div>
-            <div class="book-details">
-                <h4 class="title">
-                    <a href="${book.url}" target="_blank">${book.title}</a>
-                </h4>
-                <p class="author">By ${book.author}</p>
-            </div>
-        </div>
-        `;
+            `;
     });
 
     booksCards = document.querySelectorAll('.book-img-container');
@@ -280,14 +283,241 @@ function toggleSubmitBtn() {
 
 function submitBooks() {
     const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks'));
+    const booksForApproval = JSON.parse(localStorage.getItem('booksForApproval')) || [];
+    const filteredBooks = booksForApproval.filter(
+        book => !selectedBooks.map(book => book.id).includes(book.id)
+    );
 
-    localStorage.setItem('booksForApproval', JSON.stringify(selectedBooks));
+    localStorage.setItem('booksForApproval', JSON.stringify([...filteredBooks, ...selectedBooks]));
     localStorage.removeItem('selectedBooks');
 
     toggleApprovalModal();
     resetBooks();
     toggleSubmitBtn();
     toggleCart();
+}
+
+function searchBooks() {
+    const query = searchQuery.value;
+    const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
+
+    if (query) {
+        searchedBooks = books.filter(book =>
+            book.title.toLowerCase().includes(query.toLowerCase())
+        );
+
+        booksGrid.innerHTML = '';
+
+        searchedBooks.forEach(book => {
+            if (approvedBooks.map(book => book.id).includes(book.id)) {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container approved">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            } else if (selectedBooks.map(book => book.id).includes(book.id)) {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container selected">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            } else {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            }
+        });
+    } else {
+        booksGrid.innerHTML = '';
+
+        books.forEach(book => {
+            if (approvedBooks.map(book => book.id).includes(book.id)) {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container approved">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            } else if (selectedBooks.map(book => book.id).includes(book.id)) {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container selected">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            } else {
+                booksGrid.innerHTML += `
+                <div class="book">
+                    <div data-id="${book.id}" class="book-img-container">
+                        <div class="book-approved-overlay">
+                            <figure>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </figure>
+                        </div>
+                        <img src="${book.coverImg}" class="book-img" alt="book-img">
+                    </div>
+                    <div class="book-details">
+                        <h4 class="title">
+                            <a href="${book.url}" target="_blank">${book.title}</a>
+                        </h4>
+                        <p class="author">By ${book.author}</p>
+                    </div>
+                </div>
+                `;
+            }
+        });
+    }
+
+    booksCards = document.querySelectorAll('.book-img-container');
+
+    booksCards.forEach(bookCard => {
+        bookCard.addEventListener('click', () => {
+            selectBook(bookCard);
+        });
+    });
 }
 
 function checkOffApprovedBooks() {

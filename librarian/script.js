@@ -1,4 +1,4 @@
-let booksForApproval = JSON.parse(localStorage.getItem('booksForApproval'));
+let booksForApproval = JSON.parse(localStorage.getItem('booksForApproval')) || [];
 let cartItems = [];
 let booksCards;
 let booksCart;
@@ -18,50 +18,65 @@ cartCloseBtn.addEventListener('click', toggleCart);
 function populateBooks() {
     const booksGrid = document.querySelector('.books-grid');
 
-    booksForApproval.forEach(book => {
-        booksGrid.innerHTML += `
-        <div class="book">
-            <div data-id="${book.id}" class="book-img-container">
-                <div class="book-approved-overlay">
-                    <figure>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                    </figure>
+    if (booksForApproval.length) {
+        booksGrid.classList.remove('empty');
+
+        booksGrid.innerHTML = '';
+
+        booksForApproval.forEach(book => {
+            booksGrid.innerHTML += `
+            <div class="book">
+                <div data-id="${book.id}" class="book-img-container">
+                    <div class="book-approved-overlay">
+                        <figure>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </figure>
+                    </div>
+                    <img src="${book.coverImg}" class="book-img" alt="book-img">
                 </div>
-                <img src="${book.coverImg}" class="book-img" alt="book-img">
+                <div class="book-details">
+                    <h4 class="title">
+                        <a href="${book.url}" target="_blank">${book.title}</a>
+                    </h4>
+                    <p class="author">By ${book.author}</p>
+                </div>
             </div>
-            <div class="book-details">
-                <h4 class="title">
-                    <a href="${book.url}" target="_blank">${book.title}</a>
-                </h4>
-                <p class="author">By ${book.author}</p>
-            </div>
-        </div>
-        `;
-    });
-
-    booksCards = document.querySelectorAll('.book-img-container');
-    booksCart = document.querySelector('.cart-items');
-
-    booksCards.forEach(bookCard => {
-        bookCard.addEventListener('click', () => {
-            selectBook(bookCard);
+            `;
         });
-    });
 
-    toggleApproveBtn();
+        booksCards = document.querySelectorAll('.book-img-container');
+        booksCart = document.querySelector('.cart-items');
+
+        booksCards.forEach(bookCard => {
+            bookCard.addEventListener('click', () => {
+                selectBook(bookCard);
+            });
+        });
+
+        toggleApproveBtn();
+    } else {
+        booksGrid.classList.add('empty');
+
+        booksGrid.innerHTML = `
+            <div class="books-grid-placeholder">
+                <h2>No books pending for approval</h2>
+                <p>Here you can select books that you can approve for students</p>
+            </div>
+        `;
+    }
 }
 
 function getSelectedBooks() {
@@ -173,12 +188,13 @@ function toggleApprovalModal() {
 }
 
 function approveBooks() {
+    const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
     const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks'));
     const newBooksForApproval = booksForApproval.filter(
         book => !selectedBooks.map(book => book.id).includes(book.id)
     );
 
-    localStorage.setItem('approvedBooks', JSON.stringify(selectedBooks));
+    localStorage.setItem('approvedBooks', JSON.stringify([...approvedBooks, ...selectedBooks]));
     localStorage.setItem('booksForApproval', JSON.stringify(newBooksForApproval));
     localStorage.removeItem('selectedBooks');
 

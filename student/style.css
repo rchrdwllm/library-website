@@ -9,7 +9,7 @@
 
 :root {
     --background: #fdfdff;
-    --secondary-background: #ededf0;
+    --secondary-background: #f4f4f7;
     --text: #373a3b;
     --secondary-text: #747474;
     --accent: #9b8686;
@@ -61,6 +61,20 @@ button {
     background-color: transparent;
     font-family: inherit;
     color: inherit;
+}
+
+input {
+    display: block;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: var(--secondary-text);
 }
 
 header {
@@ -189,6 +203,22 @@ header .header-btns .cart-btn:hover {
     line-height: 85%;
 }
 
+.books-container .form {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    background-color: var(--secondary-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.books-container .form label {
+    height: 1rem;
+    width: 1rem;
+    color: var(--secondary-text);
+}
+
 .books-container .hero-heading span {
     color: var(--accent);
 }
@@ -202,7 +232,7 @@ header .header-btns .cart-btn:hover {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .books-container .books-grid .book .book-img-container {
