@@ -59,6 +59,7 @@ button {
     outline: none;
     font-size: inherit;
     background-color: transparent;
+    font-family: inherit;
     color: inherit;
 }
 
