@@ -17,6 +17,7 @@
     --shadow: #00000040;
     --accent-shadow: #deb5b5;
     --border: #0000002a;
+    --check: #2ebd94;
 }
 
 ::selection {
@@ -71,42 +72,67 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 }
 
-header .cart-btn {
-    height: 1.25rem;
-    width: 1.25rem;
+header .header-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-btns .cart-btn {
+    height: 1.5rem;
+    width: 1.5rem;
     cursor: pointer;
+    margin-left: 2rem;
 }
 
-.approval-modal-container {
+header .header-btns .sign-out-btn {
+    font-size: 0.875rem;
+}
+
+header .header-btns .cart-btn,
+header .header-btns .sign-out-btn {
+    transition: 0.25s color;
+}
+
+header .header-btns .sign-out-btn:hover,
+header .header-btns .cart-btn:hover {
+    color: var(--accent);
+}
+
+.approval-modal-container,
+.approved-modal-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     z-index: 3;
-    background-color: transparent;
+    background-color: #00000046;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(25px);
     pointer-events: none;
-    transition: 0.25s background-color, 0.25s backdrop-filter;
+    transition: 0.25s opacity;
+    opacity: 0;
 }
 
-.approval-modal-container.visible {
+.approval-modal-container.visible,
+.approved-modal-container.visible {
     opacity: 1;
     pointer-events: all;
-    background-color: #00000046;
-    backdrop-filter: blur(25px);
 }
 
-.approval-modal-container.visible .approval-modal {
+.approval-modal-container.visible .approval-modal,
+.approved-modal-container.visible .approved-modal {
     opacity: 1;
 }
 
-.approval-modal {
+.approval-modal,
+.approved-modal {
     position: relative;
     background-color: var(--background);
     border-radius: 2rem;
@@ -120,19 +146,30 @@ header .cart-btn {
     transition: 0.25s opacity;
 }
 
-.approval-modal h1 {
-    text-align: center;
-    font-size: 3rem;
+.approval-modal figure,
+.approved-modal figure {
+    height: 8rem;
+    width: 8rem;
+    color: var(--check);
 }
 
-.approval-modal p {
+.approval-modal h1,
+.approved-modal h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+.approval-modal p,
+.approved-modal p {
     margin-top: 1rem;
     color: var(--secondary-text);
     text-align: center;
     margin-top: 2rem;
 }
 
-.approval-modal .approval-modal-close {
+.approval-modal .approval-modal-close,
+.approved-modal .approved-modal-close {
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -143,12 +180,20 @@ header .cart-btn {
 }
 
 .books-container {
-    flex: 1;
     padding: 3rem 10rem;
 }
 
+.books-container .hero-heading {
+    font-size: 4.5rem;
+    line-height: 85%;
+}
+
+.books-container .hero-heading span {
+    color: var(--accent);
+}
+
 .books-container > p {
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     color: var(--secondary-text);
 }
 
@@ -160,11 +205,13 @@ header .cart-btn {
 }
 
 .books-container .books-grid .book .book-img-container {
+    position: relative;
     border-radius: 1rem;
     padding: 2rem;
     background-color: var(--secondary-background);
     height: 15rem;
     cursor: pointer;
+    overflow: hidden;
     transition: 0.25s box-shadow, 0.25s background-color;
 }
 
@@ -178,6 +225,35 @@ header .cart-btn {
 
 .books-container .books-grid .book .book-img-container:hover {
     box-shadow: 1px 20px 45px -10px var(--shadow);
+}
+
+.books-container .books-grid .book .book-img-container .book-approved-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s opacity;
+    opacity: 0;
+}
+
+.books-container .books-grid .book .book-img-container.approved {
+    pointer-events: none;
+}
+
+.books-container .books-grid .book .book-img-container.approved .book-approved-overlay {
+    opacity: 0.75;
+}
+
+.books-container .books-grid .book .book-img-container .book-approved-overlay figure {
+    height: 3rem;
+    width: 4rem;
+    color: var(--check);
 }
 
 .books-container .books-grid .book .book-details {
@@ -196,22 +272,29 @@ header .cart-btn {
     color: var(--secondary-text);
 }
 
+.books-cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    background-color: #00000046;
+    backdrop-filter: blur(25px);
+    pointer-events: none;
+    transition: 0.25s opacity;
+    opacity: 0;
+}
+
+.books-cart-overlay.visible {
+    opacity: 1;
+}
+
 .books-cart {
     position: fixed;
     top: 0;
     right: 0;
     z-index: 2;
-    width: 100%;
-    height: 100vh;
-    background-color: transparent;
-    backdrop-filter: blur(0px);
-    transition: 0.25s backdrop-filter, 0.25s background-color;
-    pointer-events: none;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.books-cart .books-cart-wrapper {
     background-color: var(--background);
     padding: 3rem 2rem;
     width: 25rem;
@@ -222,16 +305,10 @@ header .cart-btn {
     transition: 0.75s transform cubic-bezier(0.16, 1, 0.3, 1),
         0.75s opacity cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateX(100%);
-    opacity: 0;
+    opacity: 1;
 }
 
 .books-cart.visible {
-    background-color: #00000046;
-    backdrop-filter: blur(25px);
-    pointer-events: all;
-}
-
-.books-cart.visible .books-cart-wrapper {
     transform: translateX(0);
     opacity: 1;
     pointer-events: all;
@@ -257,12 +334,7 @@ header .cart-btn {
 }
 
 .books-cart .cart-items::-webkit-scrollbar {
-    /* display: none; */
-}
-
-.books-cart .cart-items::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    outline: 1px solid slategrey;
+    display: none;
 }
 
 .books-cart .cart-items .cart-placeholder {

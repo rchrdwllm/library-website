@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <h1>Books <span>librarian</span></h1>
+            <div class="header-btns">
+                <button class="sign-out-btn">
+                    <a href="../index.html"> Sign out </a>
+                </button>
+                <button class="cart-btn">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <div class="books-container">
+            <h1 class="hero-heading">Hello, <span>William!</span></h1>
+            <p>Here are books that are pending of your approval.</p>
+            <div class="books-grid"></div>
+        </div>
+        <div class="approval-modal-container">
+            <div class="approval-modal">
+                <button class="approval-modal-close">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+                <figure>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                    </svg>
+                </figure>
+                <h1>
+                    You have approved your <br />
+                    selected books!
+                </h1>
+            </div>
+        </div>
+        <div class="books-cart-overlay"></div>
+        <aside class="books-cart">
+            <div class="books-cart-header">
+                <h1>Your items to approve</h1>
+                <button class="books-cart-close">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-items">
+                <div class="cart-placeholder">
+                    <p>Looks like you haven't selected anything to approve yet!</p>
+                </div>
+            </div>
+            <button class="approve-btn" disabled>Approve</button>
+        </aside>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -96,6 +96,8 @@ const books = [
             'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1618526890i/13335037.jpg',
     },
 ];
+const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
+const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
 
 let booksCards;
 let booksCart;
@@ -103,12 +105,16 @@ let cartItems = [];
 const submitBtn = document.querySelector('.submit-btn');
 const approvalModal = document.querySelector('.approval-modal-container');
 const closeApprovalModalBtn = document.querySelector('.approval-modal-close');
+const approvedModal = document.querySelector('.approved-modal-container');
+const closeApprovedModalBtn = document.querySelector('.approved-modal-close');
 const cart = document.querySelector('.books-cart');
+const cartOverlay = document.querySelector('.books-cart-overlay');
 const cartBtn = document.querySelector('.cart-btn');
 const cartCloseBtn = document.querySelector('.books-cart-close');
 
 submitBtn.addEventListener('click', submitBooks);
 closeApprovalModalBtn.addEventListener('click', toggleApprovalModal);
+closeApprovedModalBtn.addEventListener('click', toggleApprovedModal);
 cartBtn.addEventListener('click', toggleCart);
 cartCloseBtn.addEventListener('click', toggleCart);
 
@@ -119,6 +125,24 @@ function populateBooks() {
         booksGrid.innerHTML += `
         <div class="book">
             <div data-id="${book.id}" class="book-img-container">
+                <div class="book-approved-overlay">
+                    <figure>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                    </figure>
+                </div>
                 <img src="${book.coverImg}" class="book-img" alt="book-img">
             </div>
             <div class="book-details">
@@ -140,12 +164,6 @@ function populateBooks() {
         });
     });
 
-    toggleSubmitBtn();
-}
-
-function getSelectedBooks() {
-    const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
-
     if (selectedBooks.length) {
         selectedBooks.forEach(book => {
             cartItems.push(book.id);
@@ -158,6 +176,14 @@ function getSelectedBooks() {
         updateCartContents();
         toggleSubmitBtn();
     }
+
+    if (approvedBooks.length) {
+        approvedModal.classList.toggle('visible');
+
+        checkOffApprovedBooks();
+    }
+
+    toggleSubmitBtn();
 }
 
 function selectBook(bookCard) {
@@ -264,13 +290,25 @@ function submitBooks() {
     toggleCart();
 }
 
+function checkOffApprovedBooks() {
+    approvedBooks.forEach(book => {
+        const bookCard = document.querySelector(`.book-img-container[data-id="${book.id}"]`);
+
+        bookCard.classList.toggle('approved');
+    });
+}
+
 function toggleApprovalModal() {
     approvalModal.classList.toggle('visible');
 }
 
+function toggleApprovedModal() {
+    approvedModal.classList.toggle('visible');
+}
+
 function toggleCart() {
     cart.classList.toggle('visible');
+    cartOverlay.classList.toggle('visible');
 }
 
 populateBooks();
-getSelectedBooks();
