@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="login.css" />
+
+        <title>T.I.P. Library</title>
+    </head>
+    <script src="login.js"></script>
+    <body>
+        <div class="container">
+            <div class="text">
+                <div class="col">
+                    <p>Welcome to Library</p>
+                    <p></p>
+                </div>
+                <div class="credentials">
+                    <div class="des">
+                        <div class="hello">
+                            <label for="input"><b>Are you a Student or a Librarian:</b></label>
+                            <div id="person" onchange="field()">
+                                <img src="student.png" class="imgstud" />
+                                <img src="librarian.png" class="imglib" />
+                                <input
+                                    type="button"
+                                    value="Student"
+                                    onclick="buttonS()"
+                                    class="button1"
+                                />
+                                <input
+                                    type="button"
+                                    value="Librarian"
+                                    onclick="buttonL()"
+                                    class="button2"
+                                />
+                            </div>
+                        </div>
+                        <div id="student" style="display: none">
+                            <label for="sname"><b>Student Name:</b></label>
+                            <input type="text" id="sname" name="sname" /><br /><br />
+                            <label for="sid"> &nbsp; &nbsp; &nbsp; <b>Student ID:</b></label>
+                            <input type="text" id="sid" name="sid" /><br /><br />
+                        </div>
+                        <div id="librarian" style="display: none">
+                            <label for="lname"><b>Librarian Name:</b></label>
+                            <input type="text" id="lname" name="lname" /><br /><br />
+                            <label for="lid">&nbsp; &nbsp; &nbsp; <b>Librarian ID:</b></label>
+                            <input type="text" id="lid" name="lid" /><br /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer"></div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+/* header {
+    overflow:unset;
+    background-color: #9b8686;
+    padding: 20px;
+    height: 100px;
+    width: 100%;
+    margin-left: -20px;
+    margin-right: 0%;
+    margin-top: -20px; 
+    background-size: cover;
+    text-decoration-color: black;
+    font-size: 100%;
+    font-style: italic;
+    text-align:end;
+
+} 
+.header-image {
+    background-image: url("Design.png");
+    background: position 20px;
+    position:fixed; 
+    background-size:contain;
+    height: 100px;
+    width: 100px;
+     }  */
+
+     ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      
+      li {
+        float: right;
+      }
+      
+      li a {
+        display: block;
+        padding: 8px;
+        padding-inline-start: 20px;
+        /* padding-right: ; */
+        background-color: #dddddd;
+      }
+      .logo{
+        width: 100px;
+        cursor: pointer;
+      }
+
+      nav{
+        flex: 1;
+        text-align: right;
+      }
+      nav ul li{
+        list-style: none;
+        display: inline-block;
+        margin-left: 60px;
+      }
+      nav ul li a{
+        text-decoration: none;
+        color: #9c2f2f;
+        font-size: 20px;
+          }
