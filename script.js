@@ -7,6 +7,7 @@ const studentId = document.querySelector('#studentId');
 const librarianName = document.querySelector('#librarianName');
 const librarianId = document.querySelector('#librarianId');
 const loginBtn = document.querySelector('.login-btn');
+const hyperlink = document.querySelector('.login-btn a');
 
 let role = 'student';
 
@@ -27,6 +28,7 @@ function toggleStudent() {
     }
 
     role = 'student';
+    hyperlink.href = './student/index.html';
 
     checkFields();
 }
@@ -40,6 +42,7 @@ function toggleLibrarian() {
     }
 
     role = 'librarian';
+    hyperlink.href = './librarian/index.html';
 
     checkFields();
 }
@@ -72,13 +75,9 @@ function checkFields() {
 
 function login() {
     if (role === 'student') {
-        window.location.replace('/student/index.html');
-
         localStorage.setItem('studentName', studentName.value);
         localStorage.setItem('studentId', studentId.value);
     } else if (role === 'librarian') {
-        window.location.replace('/librarian/index.html');
-
         localStorage.setItem('librarianName', librarianName.value);
         localStorage.setItem('librarianId', librarianId.value);
     }

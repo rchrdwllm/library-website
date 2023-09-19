@@ -195,11 +195,16 @@ input {
     margin-top: 1rem;
     background-color: var(--secondary-accent);
     color: var(--accent);
-    padding: 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     width: 100%;
     transition: 0.25s box-shadow, 0.25s color, 0.25s background-color;
+}
+
+.login-btn a {
+    display: block;
+    height: 100%;
+    padding: 1rem;
 }
 
 .login-btn:hover {
@@ -212,6 +217,10 @@ input {
     background-color: var(--secondary-background);
     color: var(--secondary-text);
     cursor: not-allowed;
+}
+
+.login-btn.disabled a {
+    pointer-events: none;
 }
 
 .login-btn.disabled:hover {
