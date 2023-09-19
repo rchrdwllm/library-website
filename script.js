@@ -73,7 +73,13 @@ function checkFields() {
 function login() {
     if (role === 'student') {
         window.location.replace('/student/index.html');
+
+        localStorage.setItem('studentName', studentName.value);
+        localStorage.setItem('studentId', studentId.value);
     } else if (role === 'librarian') {
         window.location.replace('/librarian/index.html');
+
+        localStorage.setItem('librarianName', librarianName.value);
+        localStorage.setItem('librarianId', librarianId.value);
     }
 }

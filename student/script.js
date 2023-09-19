@@ -258,6 +258,7 @@ const books = [
 ];
 const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
 const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
+const studentName = localStorage.getItem('studentName') || '';
 
 let booksCards;
 let booksCart;
@@ -268,22 +269,22 @@ const booksGrid = document.querySelector('.books-grid');
 const submitBtn = document.querySelector('.submit-btn');
 const approvalModal = document.querySelector('.approval-modal-container');
 const closeApprovalModalBtn = document.querySelector('.approval-modal-close');
-const approvedModal = document.querySelector('.approved-modal-container');
-const closeApprovedModalBtn = document.querySelector('.approved-modal-close');
 const cart = document.querySelector('.books-cart');
 const cartOverlay = document.querySelector('.books-cart-overlay');
 const cartBtn = document.querySelector('.cart-btn');
 const cartCloseBtn = document.querySelector('.books-cart-close');
 const searchQuery = document.querySelector('#query');
+const greeting = document.querySelector('.books-container p');
 
 submitBtn.addEventListener('click', submitBooks);
 closeApprovalModalBtn.addEventListener('click', toggleApprovalModal);
-closeApprovedModalBtn.addEventListener('click', toggleApprovedModal);
 cartBtn.addEventListener('click', toggleCart);
 cartCloseBtn.addEventListener('click', toggleCart);
 searchQuery.addEventListener('keyup', searchBooks);
 
 function populateBooks() {
+    greeting.textContent = `Hello, ${studentName}! Click on books to add them to your cart instantly!`;
+
     books.forEach(book => {
         booksGrid.innerHTML += `
             <div class="book">
@@ -341,7 +342,6 @@ function populateBooks() {
     }
 
     if (approvedBooks.length) {
-        toggleApprovedModal();
         checkOffApprovedBooks();
     }
 
@@ -689,10 +689,6 @@ function checkOffApprovedBooks() {
 
 function toggleApprovalModal() {
     approvalModal.classList.toggle('visible');
-}
-
-function toggleApprovedModal() {
-    approvedModal.classList.toggle('visible');
 }
 
 function toggleCart() {

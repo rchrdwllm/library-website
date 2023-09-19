@@ -91,6 +91,8 @@ input {
     display: grid;
     grid-template-columns: repeat(2, 50%);
     padding: 3rem;
+    place-content: center;
+    place-items: center;
 }
 
 .hero-heading {
@@ -104,9 +106,12 @@ input {
     color: var(--background);
 }
 
-.credentials {
-    height: 100%;
+.credentials-container {
     width: 100%;
+}
+
+.credentials {
+    padding: 5rem;
     background-color: var(--background);
     border-radius: 2rem;
     box-shadow: 1px 20px 45px -10px var(--shadow);
@@ -117,6 +122,12 @@ input {
 }
 
 .credentials p {
+    width: 100%;
+    text-align: center;
+    color: var(--secondary-text);
+}
+
+.credentials .form-container > p {
     margin-top: 2rem;
     width: 100%;
     text-align: center;
@@ -124,7 +135,7 @@ input {
 }
 
 .form-container {
-    width: 70%;
+    width: 75%;
 }
 
 .form input {
@@ -137,7 +148,11 @@ input {
     color: var(--secondary-text);
 }
 
-.form input:not(:first-child) {
+.form input {
+    margin-top: 2rem;
+}
+
+.form input:nth-child(3) {
     margin-top: 1rem;
 }
 

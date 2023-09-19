@@ -9,6 +9,8 @@ const cartOverlay = document.querySelector('.books-cart-overlay');
 const cartBtn = document.querySelector('.cart-btn');
 const cartCloseBtn = document.querySelector('.books-cart-close');
 const approveBtn = document.querySelector('.approve-btn');
+const greeting = document.querySelector('.hero-heading');
+const librarianName = localStorage.getItem('librarianName');
 
 approveBtn.addEventListener('click', approveBooks);
 closeApprovalModalBtn.addEventListener('click', toggleApprovalModal);
@@ -16,6 +18,8 @@ cartBtn.addEventListener('click', toggleCart);
 cartCloseBtn.addEventListener('click', toggleCart);
 
 function populateBooks() {
+    greeting.innerHTML = `Hello, <span>${librarianName}!</span>`;
+
     const booksGrid = document.querySelector('.books-grid');
 
     if (booksForApproval.length) {

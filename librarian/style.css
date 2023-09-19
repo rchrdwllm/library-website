@@ -73,7 +73,7 @@ header h1 {
 
 header h1 span {
     display: block;
-    margin-left: 0.5rem;
+    margin-left: 0.75rem;
     font-family: 'Inclusive Sans', sans-serif;
     font-size: 1rem;
     color: var(--accent);
@@ -114,6 +114,18 @@ header .header-btns .sign-out-btn {
 header .header-btns .sign-out-btn:hover,
 header .header-btns .cart-btn:hover {
     color: var(--accent);
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div .logo {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
 }
 
 .approval-modal-container {

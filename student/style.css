@@ -117,6 +117,18 @@ header .header-btns .cart-btn:hover {
     color: var(--accent);
 }
 
+header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div .logo {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
 .approval-modal-container,
 .approved-modal-container {
     position: fixed;

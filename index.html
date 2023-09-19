@@ -4,67 +4,58 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
-        <title>T.I.P. Library</title>
+        <title>Urbanread</title>
     </head>
     <body>
         <div class="overlay"></div>
         <div class="container">
             <div class="hero-heading">
-                <h1>Welcome to Library</h1>
+                <h1>
+                    Welcome to <br />
+                    Urbanread
+                </h1>
             </div>
-            <div class="credentials">
-                <div class="form-container">
-                    <div class="form student-form active">
-                        <input
-                            type="text"
-                            name="studentName"
-                            id="studentName"
-                            placeholder="Student name"
-                        />
-                        <input
-                            type="text"
-                            name="studentId"
-                            id="studentId"
-                            placeholder="Student ID"
-                        />
-                    </div>
-                    <div class="form librarian-form">
-                        <input
-                            type="text"
-                            name="librarianName"
-                            id="librarianName"
-                            placeholder="Librarian name"
-                        />
-                        <input
-                            type="text"
-                            name="librarianId"
-                            id="librarianId"
-                            placeholder="Librarian ID"
-                        />
-                    </div>
-                    <button class="login-btn disabled" disabled>Login</button>
-                    <p>You are a</p>
-                    <div class="form-btns">
-                        <button class="form-btn student-btn active">Student</button>
-                        <button class="form-btn librarian-btn">Librarian</button>
+            <div class="credentials-container">
+                <div class="credentials">
+                    <div class="form-container">
+                        <div class="form student-form active">
+                            <p>Login to your student account</p>
+                            <input
+                                type="text"
+                                name="studentName"
+                                id="studentName"
+                                placeholder="Student name"
+                            />
+                            <input
+                                type="text"
+                                name="studentId"
+                                id="studentId"
+                                placeholder="Student ID"
+                            />
+                        </div>
+                        <div class="form librarian-form">
+                            <p>Login to your librarian account</p>
+                            <input
+                                type="text"
+                                name="librarianName"
+                                id="librarianName"
+                                placeholder="Librarian name"
+                            />
+                            <input
+                                type="text"
+                                name="librarianId"
+                                id="librarianId"
+                                placeholder="Librarian ID"
+                            />
+                        </div>
+                        <button class="login-btn disabled" disabled>Login</button>
+                        <p>You are a</p>
+                        <div class="form-btns">
+                            <button class="form-btn student-btn active">Student</button>
+                            <button class="form-btn librarian-btn">Librarian</button>
+                        </div>
                     </div>
                 </div>
-                <!-- <div id="person" onchange="field()">
-                    <input type="button" value="Student" onclick="buttonS()" class="button1" />
-                    <input type="button" value="Librarian" onclick="buttonL()" class="button2" />
-                </div>
-                <div id="student" style="display: none">
-                    <label for="sname"><b>Student Name:</b></label>
-                    <input type="text" id="sname" name="sname" /><br /><br />
-                    <label for="sid"> &nbsp; &nbsp; &nbsp; <b>Student ID:</b></label>
-                    <input type="text" id="sid" name="sid" /><br /><br />
-                </div>
-                <div id="librarian" style="display: none">
-                    <label for="lname"><b>Librarian Name:</b></label>
-                    <input type="text" id="lname" name="lname" /><br /><br />
-                    <label for="lid">&nbsp; &nbsp; &nbsp; <b>Librarian ID:</b></label>
-                    <input type="text" id="lid" name="lid" /><br /><br />
-                </div> -->
             </div>
         </div>
         <script src="script.js"></script>
