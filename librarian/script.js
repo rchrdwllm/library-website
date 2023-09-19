@@ -170,6 +170,9 @@ function toggleCart() {
 }
 
 function toggleApproveBtn() {
+    console.log(cartItems.length);
+    console.log('asdf');
+
     if (cartItems.length) {
         approveBtn.classList.remove('disabled');
         approveBtn.disabled = false;
