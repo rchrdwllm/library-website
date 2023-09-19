@@ -285,12 +285,13 @@ header div .logo {
     opacity: 0;
 }
 
-.books-container .books-grid .book .book-img-container.approved {
-    pointer-events: none;
-}
-
 .books-container .books-grid .book .book-img-container.approved .book-approved-overlay {
     opacity: 0.75;
+}
+
+.books-container .books-grid .book .book-img-container.for-approval {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .books-container .books-grid .book .book-img-container .book-approved-overlay figure {

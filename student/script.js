@@ -258,6 +258,7 @@ const books = [
 ];
 const selectedBooks = JSON.parse(localStorage.getItem('selectedBooks')) || [];
 const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
+const booksForApproval = JSON.parse(localStorage.getItem('booksForApproval')) || [];
 const studentName = localStorage.getItem('studentName') || '';
 
 let booksCards;
@@ -345,12 +346,33 @@ function populateBooks() {
         checkOffApprovedBooks();
     }
 
+    if (booksForApproval.length) {
+        booksForApproval.forEach(book => {
+            const bookCard = document.querySelector(`.book-img-container[data-id="${book.id}"]`);
+
+            bookCard.classList.toggle('for-approval');
+        });
+    }
+
     toggleSubmitBtn();
 }
 
 function selectBook(bookCard) {
     const isSelected = bookCard.classList.contains('selected');
+    const isApproved = bookCard.classList.contains('approved');
     const bookId = bookCard.dataset.id;
+    const approvedBooks = JSON.parse(localStorage.getItem('approvedBooks')) || [];
+
+    if (isApproved) {
+        bookCard.classList.remove('approved');
+        bookCard.classList.remove('selected');
+
+        const newApprovedBooks = approvedBooks.filter(book => book.id !== bookId);
+
+        localStorage.setItem('approvedBooks', JSON.stringify(newApprovedBooks));
+
+        return;
+    }
 
     if (isSelected) {
         cartItems = cartItems.filter(item => item !== bookId);
@@ -415,8 +437,18 @@ function updateCartContents() {
 function resetBooks() {
     cartItems = [];
 
+    const booksForApproval = JSON.parse(localStorage.getItem('booksForApproval')) || [];
+
     booksCards.forEach(bookCard => {
+        const bookId = bookCard.dataset.id;
+
         bookCard.classList.remove('selected');
+
+        if (booksForApproval.find(book => book.id === bookId)) {
+            if (!bookCard.classList.contains('for-approval')) {
+                bookCard.classList.add('for-approval');
+            }
+        }
     });
 
     updateCartContents();
@@ -449,6 +481,12 @@ function submitBooks() {
 
     localStorage.setItem('booksForApproval', JSON.stringify([...filteredBooks, ...selectedBooks]));
     localStorage.removeItem('selectedBooks');
+
+    [...filteredBooks, ...selectedBooks].forEach(book => {
+        const bookCard = document.querySelector(`.book-img-container[data-id="${book.id}"]`);
+
+        bookCard.classList.toggle('for-approval');
+    });
 
     toggleApprovalModal();
     resetBooks();
